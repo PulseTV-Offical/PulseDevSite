@@ -133,6 +133,7 @@ export default function Home() {
           border-radius: 6px;
           font-weight: 500;
           border: none;
+          transition: background-color 0.2s, color 0.2s, transform 0.2s; /* <-- added transition */
         }
 
         .signup-btn {
@@ -143,11 +144,12 @@ export default function Home() {
           font-weight: 500;
           border: none;
           cursor: pointer;
-          transition: background-color 0.2s;
+          transition: background-color 0.2s, transform 0.2s; /* match the same speed as login */
         }
 
         .signup-btn:hover {
-          background-color: #E53935;
+          background-color: #E53935; /* keep same */
+          transform: translateY(-2px); /* optional: same effect for hover animation */
         }
 
         .ad-container {
