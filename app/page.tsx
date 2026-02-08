@@ -38,7 +38,7 @@ export default function Home() {
       />
 
       <div className="top-right">
-        <button className="btn login-btn" disabled>
+        <button className="btn" disabled>
           Login
         </button>
         <button className="btn signup-btn" onClick={() => setShowSignup(true)}>
