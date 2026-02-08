@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./SignupModal.module.css";
+import { jsx } from "react/jsx-runtime";
 
 interface SignupModalProps {
   onClose: () => void;
@@ -62,6 +63,7 @@ export default function SignupModal({ onClose, onSuccess }: SignupModalProps) {
       >
         <Image
           src="/assets/icons/icons8-cross-30-1.svg"
+          style={{ backgroundColor: "#e53935" }}
           alt="Close icon"
           width={30}
           height={30}
