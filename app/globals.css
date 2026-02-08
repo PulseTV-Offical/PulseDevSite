@@ -32,6 +32,7 @@ body {
 .logo {
   margin-bottom: 20px;
   animation: fadeIn 1.2s ease-out;
+  animation: pulseGlow 2.5s infinite;
 }
 
 h1 {
