@@ -35,7 +35,7 @@ export default function Home() {
         <button className="btn login-btn" disabled>
           Login
         </button>
-        <button className="btn primary signup-btn" onClick={() => setShowSignup(true)}>
+        <button className="btn primary">
           Sign Up
         </button>
       </div>
@@ -148,8 +148,8 @@ export default function Home() {
         }
 
         .signup-btn:hover {
-          background-color: #E53935; /* keep same */
-          transform: translateY(-2px); /* optional: same effect for hover animation */
+          background-color: #E53935;
+          transform: translateY(-2px);
         }
 
         .ad-container {
