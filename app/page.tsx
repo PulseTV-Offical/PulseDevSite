@@ -17,7 +17,6 @@ export default function Home() {
     setShowVerify(true);
   };
 
-  // Run adsbygoogle push after component mounts
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).adsbygoogle) {
       (window as any).adsbygoogle.push({});
@@ -26,19 +25,22 @@ export default function Home() {
 
   return (
     <main className="container-wrapper">
-      {/* Google AdSense script */}
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8986377482700205"
         crossOrigin="anonymous"
       />
 
-      <div className="container">
-        <div className="top-right">
-          <button className="btn login-btn disabled">Login</button>
-          <button className="btn signup-btn disabled">Sign Up</button>
-        </div>
+      <div className="top-right">
+        <button className="btn login-btn" disabled>
+          Login
+        </button>
+        <button className="btn signup-btn" onClick={() => setShowSignup(true)}>
+          Sign Up
+        </button>
+      </div>
 
+      <div className="container">
         <Image
           src="/logo.png"
           alt="Pulse TV Logo"
@@ -49,6 +51,7 @@ export default function Home() {
         />
 
         <h1>Pulse TV</h1>
+
         <p className="subtitle">
           Live streaming is coming soon.
           <br />
@@ -57,13 +60,12 @@ export default function Home() {
 
         <div className="construction" />
 
-        {/* Ad Container */}
         <div className="ad-container">
           <ins
             className="adsbygoogle"
             style={{ display: "block" }}
             data-ad-client="ca-pub-8986377482700205"
-            data-ad-slot="1234567890" // replace with your Ad Slot ID
+            data-ad-slot="1234567890"
             data-ad-format="auto"
             data-full-width-responsive="true"
           ></ins>
@@ -93,7 +95,7 @@ export default function Home() {
           </button>
         </div>
 
-        <footer>App Verison: 0.0.5 © 2026 Pulse Streaming — Early Access Build</footer>
+        <footer>App Version: 1.0.6 © 2026 Pulse Streaming — Early Access Build</footer>
       </div>
 
       {showSignup && (
@@ -151,6 +153,19 @@ export default function Home() {
         .ad-container {
           margin: 20px 0;
           text-align: center;
+        }
+          
+        .container-wrapper {
+          overflow-x: hidden;
+        }
+
+        .adsbygoogle {
+          max-width: 100%;
+          display: block;
+        }
+
+        .ad-container iframe {
+          max-width: 100% !important;
         }
       `}</style>
     </main>
