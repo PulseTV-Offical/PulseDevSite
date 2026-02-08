@@ -93,7 +93,7 @@ export default function Home() {
           </button>
         </div>
 
-        <footer>© 2026 Pulse Streaming — Early Access Build</footer>
+        <footer>App Verison: 0.0.5 © 2026 Pulse Streaming — Early Access Build</footer>
       </div>
 
       {showSignup && (
