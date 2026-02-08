@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Script from "next/script";
 import SignupModal from "./components/SignupModal";
 import VerifyModal from "./components/VerifyModal";
 
@@ -16,14 +17,26 @@ export default function Home() {
     setShowVerify(true);
   };
 
+  // Run adsbygoogle push after component mounts
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).adsbygoogle) {
+      (window as any).adsbygoogle.push({});
+    }
+  }, []);
+
   return (
     <main className="container-wrapper">
+      {/* Google AdSense script */}
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8986377482700205"
+        crossOrigin="anonymous"
+      />
+
       <div className="container">
         <div className="top-right">
           <button className="btn login-btn disabled">Login</button>
-          <button className="btn signup-btn disabled">
-            Sign Up
-          </button>
+          <button className="btn signup-btn disabled">Sign Up</button>
         </div>
 
         <Image
@@ -36,7 +49,6 @@ export default function Home() {
         />
 
         <h1>Pulse TV</h1>
-
         <p className="subtitle">
           Live streaming is coming soon.
           <br />
@@ -44,6 +56,18 @@ export default function Home() {
         </p>
 
         <div className="construction" />
+
+        {/* Ad Container */}
+        <div className="ad-container">
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-client="ca-pub-8986377482700205"
+            data-ad-slot="1234567890" // replace with your Ad Slot ID
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
 
         <div className="buttons">
           <a
@@ -58,7 +82,11 @@ export default function Home() {
           <button
             className="btn"
             onClick={() =>
-              window.open("https://rootapp.gg/ACzbZCfBhQqxkhEqg-WftA", "_blank", "noopener")
+              window.open(
+                "https://rootapp.gg/ACzbZCfBhQqxkhEqg-WftA",
+                "_blank",
+                "noopener"
+              )
             }
           >
             Join Root Server
@@ -118,6 +146,11 @@ export default function Home() {
 
         .signup-btn:hover {
           background-color: #dc2626;
+        }
+
+        .ad-container {
+          margin: 20px 0;
+          text-align: center;
         }
       `}</style>
     </main>
