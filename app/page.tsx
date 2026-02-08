@@ -35,7 +35,7 @@ export default function Home() {
         <button className="btn login-btn" disabled>
           Login
         </button>
-        <button className="btn signup-btn" onClick={() => setShowSignup(true)}>
+        <button className="btn primary signup-btn" onClick={() => setShowSignup(true)}>
           Sign Up
         </button>
       </div>
@@ -136,7 +136,7 @@ export default function Home() {
         }
 
         .signup-btn {
-          background-color: #ef4444;
+          background-color: #dc2626;
           color: white;
           padding: 10px 20px;
           border-radius: 6px;
@@ -154,7 +154,7 @@ export default function Home() {
           margin: 20px 0;
           text-align: center;
         }
-          
+
         .container-wrapper {
           overflow-x: hidden;
         }
