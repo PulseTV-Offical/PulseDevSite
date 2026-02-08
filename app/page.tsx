@@ -17,14 +17,20 @@ export default function Home() {
     setShowVerify(true);
   };
 
+  // Ensure ads are initialized when page loads
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).adsbygoogle) {
-      (window as any).adsbygoogle.push({});
+      try {
+        (window as any).adsbygoogle.push({});
+      } catch (e) {
+        console.error("Adsense init error:", e);
+      }
     }
   }, []);
 
   return (
     <main className="container-wrapper">
+      {/* Google AdSense Script */}
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8986377482700205"
@@ -35,7 +41,7 @@ export default function Home() {
         <button className="btn login-btn" disabled>
           Login
         </button>
-        <button className="btn primary">
+        <button className="btn signup-btn" onClick={() => setShowSignup(true)}>
           Sign Up
         </button>
       </div>
@@ -51,7 +57,6 @@ export default function Home() {
         />
 
         <h1>Pulse TV</h1>
-
         <p className="subtitle">
           Live streaming is coming soon.
           <br />
@@ -60,12 +65,13 @@ export default function Home() {
 
         <div className="construction" />
 
+        {/* AdSense Container */}
         <div className="ad-container">
           <ins
             className="adsbygoogle"
             style={{ display: "block" }}
             data-ad-client="ca-pub-8986377482700205"
-            data-ad-slot="1234567890"
+            data-ad-slot="9477938028"
             data-ad-format="auto"
             data-full-width-responsive="true"
           ></ins>
@@ -98,13 +104,13 @@ export default function Home() {
         <footer>App Version: 1.0.8 © 2026 Pulse Streaming — Early Access Build</footer>
       </div>
 
+      {/* Modals */}
       {showSignup && (
         <SignupModal
           onClose={() => setShowSignup(false)}
           onSuccess={handleSignupSuccess}
         />
       )}
-
       {showVerify && (
         <VerifyModal
           email={userEmail}
@@ -125,7 +131,7 @@ export default function Home() {
           gap: 12px;
         }
 
-        .login-btn.disabled {
+        .login-btn {
           background-color: #555;
           color: #888;
           cursor: not-allowed;
@@ -133,22 +139,22 @@ export default function Home() {
           border-radius: 6px;
           font-weight: 500;
           border: none;
-          transition: background-color 0.2s, color 0.2s, transform 0.2s; /* <-- added transition */
+          transition: background-color 0.2s, color 0.2s, transform 0.2s;
         }
 
         .signup-btn {
-          background-color: #E53935;
+          background-color: #e53935;
           color: white;
           padding: 10px 20px;
           border-radius: 6px;
           font-weight: 500;
           border: none;
           cursor: pointer;
-          transition: background-color 0.2s, transform 0.2s; /* match the same speed as login */
+          transition: background-color 0.2s, transform 0.2s;
         }
 
         .signup-btn:hover {
-          background-color: #E53935;
+          background-color: #d32f2f;
           transform: translateY(-2px);
         }
 
@@ -159,6 +165,8 @@ export default function Home() {
 
         .container-wrapper {
           overflow-x: hidden;
+          position: relative;
+          min-height: 100vh;
         }
 
         .adsbygoogle {
