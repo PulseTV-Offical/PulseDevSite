@@ -17,7 +17,6 @@ export default function Home() {
     setShowVerify(true);
   };
 
-  // Ensure ads are initialized when page loads
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).adsbygoogle) {
       try {
@@ -30,7 +29,6 @@ export default function Home() {
 
   return (
     <main className="container-wrapper">
-      {/* Google AdSense Script */}
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8986377482700205"
@@ -65,7 +63,6 @@ export default function Home() {
 
         <div className="construction" />
 
-        {/* AdSense Container */}
         <div className="ad-container">
           <ins
             className="adsbygoogle"
@@ -101,10 +98,9 @@ export default function Home() {
           </button>
         </div>
 
-        <footer>App Version: 1.0.8 © 2026 Pulse Streaming — Early Access Build</footer>
+        <footer>App Version: 1.0.9 © 2026 Pulse Streaming — Early Access Build</footer>
       </div>
 
-      {/* Modals */}
       {showSignup && (
         <SignupModal
           onClose={() => setShowSignup(false)}
