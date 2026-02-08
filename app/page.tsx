@@ -95,7 +95,7 @@ export default function Home() {
           </button>
         </div>
 
-        <footer>App Version: 1.0.6 © 2026 Pulse Streaming — Early Access Build</footer>
+        <footer>App Version: 1.0.7 © 2026 Pulse Streaming — Early Access Build</footer>
       </div>
 
       {showSignup && (
@@ -136,7 +136,7 @@ export default function Home() {
         }
 
         .signup-btn {
-          background-color: #dc2626;
+          background-color: #E53935;
           color: white;
           padding: 10px 20px;
           border-radius: 6px;
@@ -147,7 +147,7 @@ export default function Home() {
         }
 
         .signup-btn:hover {
-          background-color: #dc2626;
+          background-color: #E53935;
         }
 
         .ad-container {
