@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import styles from "./VerifyModal.module.css";
+import axios from "axios";
 
 interface VerifyModalProps {
   email: string;
@@ -35,6 +36,9 @@ export default function VerifyModal({ email, onClose, onSuccess }: VerifyModalPr
 
   const handleVerify = async () => {
     const verificationCode = code.join("");
+    // @ts-ignore
+    const correctEmail = email.user.email
+    console.log(verificationCode)
     if (verificationCode.length !== 6) {
       setError("Please enter all 6 digits");
       return;
@@ -44,17 +48,22 @@ export default function VerifyModal({ email, onClose, onSuccess }: VerifyModalPr
     setError("");
 
     try {
-      const response = await fetch("/api/auth/verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code: verificationCode }),
-      });
+      const response = await axios.post(
+        "https://api.pulsetv.app/api/auth/verify", 
+        {
+          email: correctEmail,
+          code: verificationCode 
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          },
+        }
+      )
 
-      const data = await response.json();
+      const data = response.data
 
-      if (!response.ok) {
-        throw new Error(data.message || "Verification failed");
-      }
+      console.log(response.status)
 
       onSuccess();
     } catch (err: any) {
@@ -83,9 +92,7 @@ export default function VerifyModal({ email, onClose, onSuccess }: VerifyModalPr
         <button className={styles.closeBtn} onClick={onClose}>
           ×
         </button>
-
-        <h2>Desktop</h2>
-
+        
         <div className={styles.codeInputs}>
           {code.map((digit, index) => (
             <input

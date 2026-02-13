@@ -1,0 +1,48 @@
+/* ACTIONS */
+.actions {
+  width: 100%;
+  padding: 20px;
+  margin-top: 35px; /* pushed down */
+}
+
+/* REMEMBER ME */
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+/* hide default checkbox */
+.remember input {
+  display: none;
+}
+
+/* custom checkbox box */
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid #db2424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* checkmark */
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  color: #db2424;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.15s ease;
+}
+
+/* checked state */
+.remember input:checked + .checkbox .checkIcon {
+  opacity: 1;
+  transform: scale(1);
+}

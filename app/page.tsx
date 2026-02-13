@@ -5,10 +5,14 @@ import Image from "next/image";
 import Script from "next/script";
 import SignupModal from "./components/SignupModal";
 import VerifyModal from "./components/VerifyModal";
+import LoginModal from "./components/LoginModal"; 
+import "./styles/fonts.css"
+const { version } = require("../package.json")
 
 export default function Home() {
   const [showSignup, setShowSignup] = useState(false);
   const [showVerify, setShowVerify] = useState(false);
+  const [showLogin, setShowLogin] = useState(false); 
   const [userEmail, setUserEmail] = useState("");
 
   const handleSignupSuccess = (email: string) => {
@@ -18,14 +22,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).adsbygoogle) {
-      try {
-        (window as any).adsbygoogle.push({});
-      } catch (e) {
-        console.error("Adsense init error:", e);
-      }
-    }
-  }, []);
+    document.body.style.overflow =
+      showSignup || showVerify || showLogin ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showSignup, showVerify, showLogin]);
 
   return (
     <main className="container-wrapper">
@@ -36,7 +38,7 @@ export default function Home() {
       />
 
       <div className="top-right">
-        <button className="btn" disabled>
+        <button className="btn" onClick={() => setShowLogin(true)}>
           Login
         </button>
         <button className="btn signup-btn" onClick={() => setShowSignup(true)}>
@@ -71,7 +73,7 @@ export default function Home() {
             data-ad-slot="9477938028"
             data-ad-format="auto"
             data-full-width-responsive="true"
-          ></ins>
+          />
         </div>
 
         <div className="buttons">
@@ -98,27 +100,57 @@ export default function Home() {
           </button>
         </div>
 
-        <footer>App Version: 1.0.9 © 2026 Pulse Streaming — Early Access Build</footer>
+        <footer>
+          App Version: {version} © 2026 Pulse Streaming — Early Access Build
+        </footer>
       </div>
 
       {showSignup && (
-        <SignupModal
-          onClose={() => setShowSignup(false)}
-          onSuccess={handleSignupSuccess}
-        />
+        <div className="modal-overlay">
+          <SignupModal
+            onClose={() => setShowSignup(false)}
+            onSuccess={handleSignupSuccess}
+          />
+        </div>
       )}
+
       {showVerify && (
-        <VerifyModal
-          email={userEmail}
-          onClose={() => setShowVerify(false)}
-          onSuccess={() => {
-            setShowVerify(false);
-            alert("Account verified! You can now login.");
-          }}
-        />
+        <div className="modal-overlay">
+          <VerifyModal
+            email={userEmail}
+            onClose={() => setShowVerify(false)}
+            onSuccess={() => {
+              setShowVerify(false);
+              alert("Account verified! You can now login.");
+            }}
+          />
+        </div>
+      )}
+
+      {showLogin && (
+        <div className="modal-overlay">
+          <LoginModal
+            onClose={() => setShowLogin(false)}
+            onSuccess={() => {
+              setShowLogin(false);
+              alert("Logged in successfully!");
+            }}
+          />
+        </div>
       )}
 
       <style jsx>{`
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.75);
+          backdrop-filter: blur(6px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+
         .top-right {
           position: absolute;
           top: 20px;
@@ -127,51 +159,27 @@ export default function Home() {
           gap: 12px;
         }
 
-        .login-btn {
-          background-color: #555;
-          color: #888;
-          cursor: not-allowed;
-          padding: 10px 20px;
-          border-radius: 6px;
-          font-weight: 500;
-          border: none;
-          transition: background-color 0.2s, color 0.2s, transform 0.2s;
-        }
-
         .signup-btn {
           background-color: #e53935;
           color: white;
           padding: 10px 20px;
           border-radius: 6px;
-          font-weight: 500;
           border: none;
           cursor: pointer;
-          transition: background-color 0.2s, transform 0.2s;
         }
 
         .signup-btn:hover {
           background-color: #d32f2f;
-          transform: translateY(-2px);
+        }
+
+        .container-wrapper {
+          min-height: 100vh;
+          position: relative;
         }
 
         .ad-container {
           margin: 20px 0;
           text-align: center;
-        }
-
-        .container-wrapper {
-          overflow-x: hidden;
-          position: relative;
-          min-height: 100vh;
-        }
-
-        .adsbygoogle {
-          max-width: 100%;
-          display: block;
-        }
-
-        .ad-container iframe {
-          max-width: 100% !important;
         }
       `}</style>
     </main>

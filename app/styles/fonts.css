@@ -1,0 +1,17 @@
+@font-face {
+  src: url("/public/assets/fonts/HarmonyOS_Sans_Regular.ttf") format('truetype');
+  font-family: HarmonyOS;
+  font-display: block;
+}
+
+@font-face {
+  src: url("/public/assets/fonts/HarmonyOS_Sans_Semibold.ttf") format('truetype');
+  font-family: HarmonyOS-SemiBlack;
+  font-display: block;
+}
+
+@font-face {
+  src: url("/public/assets/fonts/HarmonyOS_Sans_Black.ttf") format('truetype');
+  font-family: HarmonyOS-Black;
+  font-display: block;
+}

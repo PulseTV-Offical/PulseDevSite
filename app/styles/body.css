@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    font-weight: lighter;
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    scrollbar-color: #434343a8 #17161482;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: #00000000;
+}
+
+body {
+    background-color: #101018;
+    overscroll-behavior-y: contain;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li {
+    color: #fff;
+    font-family: "HarmonyOS";
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.font-semistrong {
+    font-family: "HarmonyOS-SemiBlack";
+}
+
+.font-strong {
+    font-family: "HarmonyOS-Black";
+}
+
+a {
+    text-decoration: none;
+}
+
+input, textarea, select {
+    background-color: #00000000;
+    border: 0;
+    caret-color: #db2424;
+    color: #dcdcdc;
+    font-family: "HarmonyOS";
+    font-size: 17px;
+    outline: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+select option {
+    background-color: #1c1c25;
+    border: 0;
+    font-size: 17px;
+    padding: 5px;
+    outline: 0;
+}
