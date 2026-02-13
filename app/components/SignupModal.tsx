@@ -158,6 +158,8 @@ export default function SignupModal({ onClose, onSuccess }: SignupModalProps) {
               <option value="USD">USD</option>
               <option value="GBP">GBP</option>
               <option value="PHP">PHP</option>
+              <option value="GBP">EUR</option>
+              <option value="PHP">CAD</option>
             </select>
           </div>
         </div>
