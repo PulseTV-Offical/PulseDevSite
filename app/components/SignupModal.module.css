@@ -3,10 +3,11 @@
   border-radius: 20px;
   outline: 2px solid #db2424;
   max-width: 1000px;
-  max-height: 500px;
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
   position: relative;
   z-index: 10000;
+  padding: 20px;
 }
 
 .close {
@@ -14,6 +15,11 @@
   right: 10px;
   top: 10px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.close:hover {
+  transform: scale(1.1);
 }
 
 .infoForm {
@@ -21,6 +27,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 40px;
+  overflow: visible;
 }
 
 .form {
@@ -29,6 +36,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible;
+}
+
+.form.dob {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.currencyWrapper {
+  width: 478px;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
 }
 
 .textbox {
@@ -39,6 +63,9 @@
   display: flex;
   align-items: center;
   padding: 10px;
+  position: relative;
+  overflow: visible;
+  transition: all 0.2s ease;
 }
 
 .textbox:focus-within {
@@ -51,6 +78,7 @@
   height: 100%;
   background: #353131;
   margin: 0 15px;
+  flex-shrink: 0;
 }
 
 .dividerInp {
@@ -58,6 +86,7 @@
   height: 10px;
   background: #353131;
   margin: 0 15px;
+  flex-shrink: 0;
 }
 
 .textbox input,
@@ -67,13 +96,126 @@
   border: none;
   color: white;
   outline: none;
+  appearance: auto;
+  position: relative;
+  z-index: 10;
+  font-family: "HarmonyOS";
+  font-size: 16px;
+}
+
+.textbox input::placeholder {
+  color: #999;
+}
+
+.textbox input:focus {
+  outline: none;
+}
+
+/* React Select Container */
+.selectContainer {
+  width: 100%;
+  flex: 1;
+  position: relative;
+  overflow: visible;
+  z-index: 100;
+}
+
+:global(.react-select__control) {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  overflow: visible;
+}
+
+:global(.react-select__menu) {
+  background-color: #1c1c25 !important;
+  border: 2px solid #db2424 !important;
+  border-radius: 10px !important;
+  z-index: 9999 !important;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+:global(.react-select__menu-list) {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+:global(.react-select__option) {
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+:global(.react-select__option--is-selected) {
+  background-color: #db2424 !important;
+  color: white !important;
+}
+
+:global(.react-select__option--is-focused) {
+  background-color: #2a2a35 !important;
+  color: white;
+}
+
+:global(.react-select__single-value) {
+  color: white;
+  font-family: "HarmonyOS";
+  font-size: 16px;
+}
+
+:global(.react-select__input) {
+  color: white;
+  font-family: "HarmonyOS";
+  font-size: 16px;
+}
+
+:global(.react-select__placeholder) {
+  color: #999;
+  font-family: "HarmonyOS";
+  font-size: 16px;
+}
+
+:global(.react-select__dropdown-indicator) {
+  color: #db2424;
+  padding: 8px;
+}
+
+:global(.react-select__dropdown-indicator:hover) {
+  color: #ff3333;
+}
+
+:global(.react-select__clear-indicator) {
+  color: #db2424;
+  padding: 8px;
+}
+
+:global(.react-select__clear-indicator:hover) {
+  color: #ff3333;
 }
 
 /* ACTIONS */
 .actions {
   width: 100%;
   padding: 20px;
-  margin-top: 35px; /* pushed down */
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ERROR MESSAGE */
+.error {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background: rgba(219, 36, 36, 0.2);
+  border-left: 4px solid #db2424;
+  border-radius: 8px;
+  color: #ff6666;
+  font-size: 14px;
+  font-family: "HarmonyOS";
+  text-align: left;
 }
 
 /* REMEMBER ME */
@@ -81,9 +223,16 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
   cursor: pointer;
   color: white;
+  font-family: "HarmonyOS";
+  font-size: 14px;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.remember:hover {
+  opacity: 0.8;
 }
 
 /* hide default checkbox */
@@ -100,6 +249,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
 }
 
 /* checkmark */
@@ -113,6 +264,11 @@
 }
 
 /* checked state */
+.remember input:checked + .checkbox {
+  background: #db2424;
+  border-color: #db2424;
+}
+
 .remember input:checked + .checkbox .checkIcon {
   opacity: 1;
   transform: scale(1);
@@ -124,26 +280,52 @@
   background: #db2424;
   border-radius: 30px;
   border: none;
-  padding: 12px;
+  padding: 14px;
   cursor: pointer;
   color: white;
+  font-family: "HarmonyOS";
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-/* Pulse theme dropdown */
-.info-form .form .textbox select {
-    background-color: #1C1C25; /* same as textbox */
-    color: #DB2424;            /* Pulse red text */
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-family: "HarmonyOS";
-    font-size: 17px;
+.button:hover {
+  background: #ff3333;
+  box-shadow: 0 4px 20px rgba(219, 36, 36, 0.4);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    max-width: 95vw;
+    padding: 15px;
+  }
+
+  .form,
+  .currencyWrapper {
     width: 100%;
-    outline: none;
-    appearance: none; /* removes default arrow on some browsers */
-}
+    height: auto;
+    min-height: 80px;
+  }
 
-.info-form .form .textbox select option {
-    background-color: #1C1C25; /* match dark theme */
-    color: #fff;                /* option text white */
+  .textbox {
+    width: 90%;
+  }
+
+  .actions {
+    padding: 15px;
+  }
+
+  .button {
+    padding: 12px;
+    font-size: 14px;
+  }
 }

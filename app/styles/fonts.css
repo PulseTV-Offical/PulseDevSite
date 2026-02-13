@@ -1,17 +1,31 @@
 @font-face {
-  src: url("/public/assets/fonts/HarmonyOS_Sans_Regular.ttf") format('truetype');
-  font-family: HarmonyOS;
-  font-display: block;
+  font-family: 'Google Sans';
+  src: url('https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIVLOAusDG9mwUvMYm1wJPJ0w.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
-  src: url("/public/assets/fonts/HarmonyOS_Sans_Semibold.ttf") format('truetype');
-  font-family: HarmonyOS-SemiBlack;
-  font-display: block;
+  font-family: 'Google Sans';
+  src: url('https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIVKpG9GIx9M_1L_W5-bNLBkw.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
-  src: url("/public/assets/fonts/HarmonyOS_Sans_Black.ttf") format('truetype');
-  font-family: HarmonyOS-Black;
-  font-display: block;
+  font-family: 'Google Sans';
+  src: url('https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIVESl7pEscHVmVMm4QqSKoII.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: url('https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIVGspG9GIx9M_1L_W5-bNLBkw.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }

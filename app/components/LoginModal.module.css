@@ -1,11 +1,9 @@
-/* ACTIONS */
 .actions {
   width: 100%;
   padding: 20px;
-  margin-top: 35px; /* pushed down */
+  margin-top: 35px;
 }
 
-/* REMEMBER ME */
 .remember {
   display: flex;
   align-items: center;
@@ -15,12 +13,10 @@
   color: white;
 }
 
-/* hide default checkbox */
 .remember input {
   display: none;
 }
 
-/* custom checkbox box */
 .checkbox {
   width: 22px;
   height: 22px;
@@ -31,7 +27,6 @@
   justify-content: center;
 }
 
-/* checkmark */
 .checkIcon {
   width: 16px;
   height: 16px;
@@ -41,7 +36,6 @@
   transition: all 0.15s ease;
 }
 
-/* checked state */
 .remember input:checked + .checkbox .checkIcon {
   opacity: 1;
   transform: scale(1);
